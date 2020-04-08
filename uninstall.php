@@ -19,3 +19,5 @@
 global $wpdb; 
 
 $wpdb->query("DELETE FROM wp_posts WHERE post_type = 'book'");
+$wpdb->query("DELETE FROM wp_postmeta where  post_id not in (Select id from wp_posts)");
+$wpdb->query("DELETE FROM wp_term_relationships where  object_id not in (Select id from wp_posts)");
