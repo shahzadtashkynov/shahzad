@@ -20,6 +20,10 @@ class Shahzad
     {
         add_action('init', array($this, 'custom_post_type'));
     }
+    function register()
+    {
+        add_action('admin_enqueue_scripts', array($this, 'enqueue'));
+    }
     function activate()
     {
         // this code generates a Custom post type
@@ -34,17 +38,18 @@ class Shahzad
     function uninstall()
     {
     }
-    function custom_post_type ()
+    function custom_post_type()
     {
-        register_post_type('book',['public'=>true,'label'=>'Books']);
+        register_post_type('book', ['public' => true, 'label' => 'Books']);
     }
     function enqueue()
     {
-        wp_enqueue_style('mypluginstyle',plugins_url(),array(''),false,'all');
+        wp_enqueue_style('mypluginstyle', plugins_url('/assets/mystyle.css', __FILE__));
     }
 }
 if (class_exists('Shahzad')) {
     $shahzad = new Shahzad();
+    $shahzad->register();
 }
 
 register_activation_hook(__FILE__, array($shahzad, 'activate'));
@@ -52,4 +57,3 @@ register_activation_hook(__FILE__, array($shahzad, 'activate'));
 register_deactivation_hook(__FILE__, array($shahzad, 'deactivate'));
 
 register_uninstall_hook(__FILE__, array($shahzad, 'uninstall'));
-
