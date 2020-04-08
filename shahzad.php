@@ -38,13 +38,16 @@ class Shahzad
     {
         register_post_type('book',['public'=>true,'label'=>'Books']);
     }
+    function enqueue()
+    {
+        wp_enqueue_style('mypluginstyle','',array(''),false,'all')
+    }
 }
 if (class_exists('Shahzad')) {
     $shahzad = new Shahzad();
 }
 
 register_activation_hook(__FILE__, array($shahzad, 'activate'));
-
 
 register_deactivation_hook(__FILE__, array($shahzad, 'deactivate'));
 
