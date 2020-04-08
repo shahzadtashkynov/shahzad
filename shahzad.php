@@ -40,7 +40,7 @@ class Shahzad
     }
     function enqueue()
     {
-        wp_enqueue_style('mypluginstyle','',array(''),false,'all')
+        wp_enqueue_style('mypluginstyle',plugins_url(),array(''),false,'all');
     }
 }
 if (class_exists('Shahzad')) {
