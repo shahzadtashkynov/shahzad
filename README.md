@@ -11,3 +11,4 @@ Second method
 1. Download and extract this folder 
 2. Copy shahzad folder into wordpress/wp-content/plugins directory
 3. Test
+4. I've edited this for testing pull 
